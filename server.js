@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/workout", {
+mongoose.connect("mongodb://localhost/fitnessapp", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false
 });
 
@@ -34,9 +36,7 @@ app.get("/", (req, res) => {
 });
 
 
-// // routes
-// app.use(require("./public/api"));
-
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
+
