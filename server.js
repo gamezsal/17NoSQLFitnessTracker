@@ -23,11 +23,6 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-
 // routes
 app.use(require("./public/api"));
 
