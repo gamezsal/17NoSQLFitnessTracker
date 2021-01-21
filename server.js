@@ -4,12 +4,15 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/fitnessapp", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/fitnessapp',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 
 const app = express();
