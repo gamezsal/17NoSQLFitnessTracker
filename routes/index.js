@@ -22,6 +22,43 @@ router.post("/api/workouts", (req, res) => {
     });
 });
 
+router.put("/api/workouts/:id", (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+
+    db.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} })
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.status(400).json(err);
+    });
+});
+
+router.put("/api/workouts/:id", (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+
+    db.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} }, { new: true } )
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.status(400).json(err);
+    });
+});
+
+router.get("/api/workout/range", (req, res) => {
+    db.Workout.find({})
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.status(400).json(err);
+    });
+});
+
+
 router.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/exercise.html"));
   });
