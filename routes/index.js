@@ -1,9 +1,10 @@
 const path = require("path");
 const router = require("express").Router();
-const db = require("../models");
+const Workout = require("../models");
 
+//API Routes
 router.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    Workout.Workout.find({})
     .then(data => {
         res.json(data);
     })
@@ -13,7 +14,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.post("/api/workouts", (req, res) => {
-    db.Workout.create({})
+    Workout.Workout.create({})
     .then((dbWorkout) => {
         res.json(dbWorkout)
     })
@@ -26,7 +27,7 @@ router.put("/api/workouts/:id", (req, res) => {
     const id = req.params.id;
     const body = req.body;
 
-    db.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} })
+    Workout.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} })
     .then((data) => {
         res.json(data);
     })
@@ -39,7 +40,7 @@ router.put("/api/workouts/:id", (req, res) => {
     const id = req.params.id;
     const body = req.body;
 
-    db.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} }, { new: true } )
+    Workout.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: body} }, { new: true } )
     .then((data) => {
         res.json(data);
     })
@@ -49,7 +50,7 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 router.get("/api/workout/range", (req, res) => {
-    db.Workout.find({})
+    Workout.Workout.find({})
     .then((data) => {
         res.json(data);
     })
@@ -58,7 +59,7 @@ router.get("/api/workout/range", (req, res) => {
     });
 });
 
-
+//HTML Routes
 router.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/exercise.html"));
   });
