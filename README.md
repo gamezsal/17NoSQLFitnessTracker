@@ -56,6 +56,6 @@ We want you to have well over 200 commits by graduation, so commit early and oft
 
 You are required to submit the following:
 
-* The URL to the deployed application
+* The URL to the deployed application: https://protected-beach-69661.herokuapp.com/
 
-* The URL to the GitHub repository
+* The URL to the GitHub repository: https://github.com/gamezsal/17NoSQLFitnessTracker
